@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Módulo 2 – Use Legalmente</title>
+  <link rel="stylesheet" href="modulo.css" />
+  <link rel="shortcut icon" href="Logo.png" type="image/x-icon">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">Início</a>
+    <a href="modulo1.html">Módulo 1</a>
+    <a href="modulo2.html">Módulo 2</a>
+    <a href="modulo3.html">Módulo 3</a>
+    <a href="modulo4.html">Módulo 4</a>
+    <a href="modulo5.html">Módulo 5</a>
+  </nav>
+
+  <div class="module">
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <h1>Módulo 2: O que são Direitos Autorais?</h1>
+
+    <section class="content-box">
+      <p>
+        Direitos autorais são um conjunto de normas legais que protegem obras intelectuais como textos, músicas, filmes, programas de computador, entre outros. O autor detém o direito exclusivo de usar, reproduzir e distribuir sua criação.
+      </p>
+    </section>
+
+    <section class="example-box">
+      <h2>📌 Exemplo:</h2>
+      <p>
+        João compôs uma música original e gravou um vídeo cantando-a. Ao publicar esse vídeo na internet, ele mantém todos os direitos autorais sobre sua criação, tanto em relação à composição musical quanto à interpretação e à gravação. Esses direitos garantem que somente João, ou quem ele autorizar, pode usar, reproduzir ou comercializar a obra.
+      </p>
+      <p>
+        Se outra pessoa quiser utilizar a música de João em um comercial, vídeo ou qualquer outro projeto, deverá, obrigatoriamente, pedir sua permissão. Usar a música sem autorização configura violação de direitos autorais e pode resultar em consequências legais, como processos e pagamento de indenizações.
+      </p>
+      <p>
+        Respeitar os direitos dos criadores é essencial para valorizar o trabalho artístico e garantir que os autores sejam reconhecidos e recompensados de forma justa. Assim, promove-se um ambiente cultural saudável, que estimula a produção de novas músicas, vídeos e outras expressões criativas.
+      </p>
+    </section>
+
+    <section class="quiz-box">
+      <h2>🧠 Quiz Rápido:</h2>
+
+      <form id="quizForm">
+        <div class="question">
+          <p>1. Qual tipo de proteção é usado para músicas e filmes?</p>
+          <label><input type="radio" name="q1" value="1"> Direitos Autorais</label>
+          <label><input type="radio" name="q1" value="0"> Marcas</label>
+          <label><input type="radio" name="q1" value="0"> Patentes</label>
+        </div>
+
+        <div class="question">
+          <p>2. O que as patentes protegem?</p>
+          <label><input type="radio" name="q2" value="0"> Obras de arte</label>
+          <label><input type="radio" name="q2" value="1"> Invenções técnicas</label>
+          <label><input type="radio" name="q2" value="0"> Nome de empresas</label>
+        </div>
+
+        <div class="question">
+          <p>3. Um logotipo é protegido por:</p>
+          <label><input type="radio" name="q3" value="0"> Direito autoral</label>
+          <label><input type="radio" name="q3" value="1"> Marca</label>
+          <label><input type="radio" name="q3" value="0"> Patente</label>
+        </div>
+
+        <div class="question">
+          <p>4. Qual das opções abaixo é um exemplo de desenho industrial?</p>
+          <label><input type="radio" name="q4" value="1"> O formato exclusivo de uma garrafa</label>
+          <label><input type="radio" name="q4" value="0"> A letra de uma música</label>
+          <label><input type="radio" name="q4" value="0"> Um código de software</label>
+        </div>
+
+        <div class="question">
+          <p>5. Um segredo industrial é:</p>
+          <label><input type="radio" name="q5" value="1"> Uma fórmula confidencial usada por uma empresa</label>
+          <label><input type="radio" name="q5" value="0"> Um logotipo público</label>
+          <label><input type="radio" name="q5" value="0"> Um registro de domínio na internet</label>
+        </div>
+
+        <button type="button" onclick="verificarQuiz()">Verificar respostas</button>
+        <p id="feedback"></p>
+      </form>
+    </section>
+
+
+    <button onclick="window.location.href='modulo3.html'">Próximo módulo</button>
+  </div>
+
+  <script>
+    function verificarQuiz() {
+      const form = document.getElementById('quizForm');
+      const feedback = document.getElementById('feedback');
+      const perguntas = form.querySelectorAll('.question');
+      let respondidas = 0;
+
+      perguntas.forEach((q) => {
+        const radios = q.querySelectorAll('input[type="radio"]');
+        radios.forEach(radio => {
+          if (radio.checked) {
+            respondidas++;
+            return;
+          }
+        });
+      });
+
+      if (respondidas < perguntas.length) {
+        feedback.innerText = "⚠️ Responda todas as perguntas antes de verificar.";
+        feedback.style.backgroundColor = "#fff3cd";
+        feedback.style.color = "#856404";
+        feedback.style.padding = "1em";
+        feedback.style.borderRadius = "8px";
+        return;
+      }
+
+      let acertos = 0;
+
+      perguntas.forEach((q) => {
+        const radios = q.querySelectorAll('input[type="radio"]');
+        let correta = null;
+
+        radios.forEach(radio => {
+          radio.parentElement.style.color = ""; // limpa cor
+          if (radio.value === "1") {
+            correta = radio;
+          }
+        });
+
+        radios.forEach(radio => {
+          if (radio.checked) {
+            if (radio.value === "1") {
+              acertos++;
+              radio.parentElement.style.color = "green";
+            } else {
+              radio.parentElement.style.color = "red";
+            }
+          }
+        });
+
+        if (!correta.checked) {
+          correta.parentElement.style.color = "green";
+        }
+      });
+
+      feedback.innerText = `✅ Você acertou ${acertos} de ${perguntas.length} perguntas.`;
+      feedback.style.backgroundColor = acertos === perguntas.length ? "#d4edda" : "#f8d7da";
+      feedback.style.color = acertos === perguntas.length ? "#155724" : "#721c24";
+      feedback.style.padding = "1em";
+      feedback.style.borderRadius = "8px";
+    }
+  </script>
+
+  <script>
+    const progress = document.getElementById('progressBar');
+
+    function setProgress(percent) {
+      progress.style.width = percent + '%';
+    }
+
+    const moduleProgress = {
+      'modulo1.html': 20,
+      'modulo2.html': 40,
+      'modulo3.html': 60,
+      'modulo4.html': 80,
+      'modulo5.html': 100
+    };
+
+    const currentPage = window.location.pathname.split('/').pop();
+    setProgress(moduleProgress[currentPage] || 0);
+  </script>
+
+</body>
+</html>

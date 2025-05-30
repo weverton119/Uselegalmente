@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Módulo 3 – Use Legalmente</title>
+  <link rel="stylesheet" href="modulo.css">
+  <link rel="shortcut icon" href="Logo.png" type="image/x-icon">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">Início</a>
+    <a href="modulo1.html">Módulo 1</a>
+    <a href="modulo2.html">Módulo 2</a>
+    <a href="modulo3.html">Módulo 3</a>
+    <a href="modulo4.html">Módulo 4</a>
+    <a href="modulo5.html">Módulo 5</a>
+  </nav>
+
+  <div class="module">
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <h1>Módulo 3: Por que respeitar a Propriedade Intelectual?</h1>
+
+    <section class="content-box">
+      <p>
+        Respeitar a propriedade intelectual é fundamental para valorizar o trabalho criativo, estimular a inovação e evitar problemas legais.
+      </p>
+    </section>
+
+    <section class="example-box">
+      <h2>📌 Exemplo:</h2>
+      <p>
+       Quando você compra um filme, seja em formato físico, digital ou por meio de uma plataforma de streaming legal, está valorizando o trabalho de muitos profissionais — roteiristas, atores, diretores, produtores, técnicos e diversos outros. Esse apoio é essencial para que novas obras continuem sendo criadas e para que a indústria cultural se mantenha viva e sustentável, beneficiando artistas e o público em geral.
+      </p>
+      <p>
+        Por outro lado, ao fazer o download ilegal ou acessar conteúdos por sites piratas, você está violando os direitos autorais do criador e prejudicando quem investiu tempo, talento e recursos na produção. Além do impacto financeiro negativo para os profissionais envolvidos, essa prática expõe o consumidor a riscos como vírus, golpes virtuais e, principalmente, a sanções legais, que podem resultar em multas ou processos judiciais.
+      </p>
+      <p>
+        Por exemplo, assistir a um filme por uma plataforma oficial, como a Netflix, ou comprar um DVD original são formas éticas e legais de consumir conteúdo. Já baixar filmes de sites clandestinos ou compartilhar cópias não autorizadas com outras pessoas caracteriza uma infração aos direitos autorais. Respeitar esses direitos é uma atitude responsável, que fortalece a cultura, incentiva a inovação e garante que novos conteúdos de qualidade continuem sendo produzidos.
+      </p>
+    </section>
+
+    <section class="quiz-box">
+      <h2>🧠 Quiz Rápido:</h2>
+
+      <form id="quizForm">
+        <div class="question">
+          <p>1. Respeitar os direitos autorais é:</p>
+          <label><input type="radio" name="q1" value="0"> Opcional</label>
+          <label><input type="radio" name="q1" value="1"> Fundamental e obrigatório</label>
+          <label><input type="radio" name="q1" value="0"> Desnecessário</label>
+        </div>
+
+        <div class="question">
+          <p>2. Fazer download ilegal de músicas prejudica:</p>
+          <label><input type="radio" name="q2" value="1"> Os criadores</label>
+          <label><input type="radio" name="q2" value="0"> Os consumidores</label>
+          <label><input type="radio" name="q2" value="0"> Ninguém</label>
+        </div>
+
+        <div class="question">
+          <p>3. Infringir propriedade intelectual pode resultar em:</p>
+          <label><input type="radio" name="q3" value="1"> Consequências legais</label>
+          <label><input type="radio" name="q3" value="0"> Mais oportunidades de uso</label>
+          <label><input type="radio" name="q3" value="0"> Prêmios</label>
+        </div>
+
+        <div class="question">
+          <p>4. Comprar produtos originais:</p>
+          <label><input type="radio" name="q4" value="0"> Prejudica os criadores</label>
+          <label><input type="radio" name="q4" value="0"> Não faz diferença</label>
+          <label><input type="radio" name="q4" value="1"> Valoriza quem criou</label>
+        </div>
+
+        <div class="question">
+          <p>5. O respeito à propriedade intelectual:</p>
+          <label><input type="radio" name="q5" value="0"> Impede novas criações</label>
+          <label><input type="radio" name="q5" value="1"> Estimula a inovação</label>
+          <label><input type="radio" name="q5" value="0"> É irrelevante</label>
+        </div>
+
+        <button type="button" onclick="verificarQuiz()">Verificar respostas</button>
+        <p id="feedback"></p>
+      </form>
+    </section>
+
+    <button onclick="window.location.href='modulo4.html'">Próximo módulo</button>
+  </div>
+
+  <script>
+    function verificarQuiz() {
+      const form = document.getElementById('quizForm');
+      const feedback = document.getElementById('feedback');
+      const perguntas = form.querySelectorAll('.question');
+      let respondidas = 0;
+      let acertos = 0;
+
+      perguntas.forEach((q) => {
+        const radios = q.querySelectorAll('input[type="radio"]');
+        let selecionado = false;
+        let correta = null;
+
+        radios.forEach(radio => {
+          if (radio.value === "1") correta = radio;
+          if (radio.checked) {
+            selecionado = true;
+            if (radio.value === "1") {
+              acertos++;
+              radio.parentElement.style.color = "green";
+            } else {
+              radio.parentElement.style.color = "red";
+            }
+          }
+        });
+
+        if (selecionado) respondidas++;
+        if (correta && !correta.checked) {
+          correta.parentElement.style.color = "green";
+        }
+      });
+
+      if (respondidas < perguntas.length) {
+        feedback.innerText = "Responda todas as perguntas antes de verificar.";
+        feedback.style.color = "orange";
+        return;
+      }
+
+      feedback.innerText = `Você acertou ${acertos} de ${perguntas.length} perguntas.`;
+      feedback.style.color = acertos === perguntas.length ? "green" : "red";
+    }
+  </script>
+</body>
+</html>
+
+
+  <script>
+    function verificarQuiz() {
+      const form = document.getElementById('quizForm');
+      const feedback = document.getElementById('feedback');
+      const perguntas = form.querySelectorAll('.question');
+      let respondidas = 0;
+
+      perguntas.forEach((q) => {
+        const radios = q.querySelectorAll('input[type="radio"]');
+        radios.forEach(radio => {
+          if (radio.checked) {
+            respondidas++;
+            return;
+          }
+        });
+      });
+
+      if (respondidas < perguntas.length) {
+        feedback.innerText = "⚠️ Responda todas as perguntas antes de verificar.";
+        feedback.style.backgroundColor = "#fff3cd";
+        feedback.style.color = "#856404";
+        feedback.style.padding = "1em";
+        feedback.style.borderRadius = "8px";
+        return;
+      }
+
+      let acertos = 0;
+
+      perguntas.forEach((q) => {
+        const radios = q.querySelectorAll('input[type="radio"]');
+        let correta = null;
+
+        radios.forEach(radio => {
+          radio.parentElement.style.color = ""; // limpa cor
+          if (radio.value === "1") {
+            correta = radio;
+          }
+        });
+
+        radios.forEach(radio => {
+          if (radio.checked) {
+            if (radio.value === "1") {
+              acertos++;
+              radio.parentElement.style.color = "green";
+            } else {
+              radio.parentElement.style.color = "red";
+            }
+          }
+        });
+
+        if (!correta.checked) {
+          correta.parentElement.style.color = "green";
+        }
+      });
+
+      feedback.innerText = `✅ Você acertou ${acertos} de ${perguntas.length} perguntas.`;
+      feedback.style.backgroundColor = acertos === perguntas.length ? "#d4edda" : "#f8d7da";
+      feedback.style.color = acertos === perguntas.length ? "#155724" : "#721c24";
+      feedback.style.padding = "1em";
+      feedback.style.borderRadius = "8px";
+    }
+  </script>
+
+  <script>
+    const progress = document.getElementById('progressBar');
+
+    function setProgress(percent) {
+      progress.style.width = percent + '%';
+    }
+
+    const moduleProgress = {
+      'modulo1.html': 20,
+      'modulo2.html': 40,
+      'modulo3.html': 60,
+      'modulo4.html': 80,
+      'modulo5.html': 100
+    };
+
+    const currentPage = window.location.pathname.split('/').pop();
+    setProgress(moduleProgress[currentPage] || 0);
+  </script>
+
+</body>
+</html>

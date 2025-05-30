@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Módulo 5 – Use Legalmente</title>
+  <link rel="stylesheet" href="modulo.css">
+  <link rel="shortcut icon" href="Logo.png" type="image/x-icon">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">Início</a>
+    <a href="modulo1.html">Módulo 1</a>
+    <a href="modulo2.html">Módulo 2</a>
+    <a href="modulo3.html">Módulo 3</a>
+    <a href="modulo4.html">Módulo 4</a>
+    <a href="modulo5.html">Módulo 5</a>
+  </nav>
+  <div class="module">
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <h1>Módulo 5: Como proteger sua criação?</h1>
+
+    <section class="content-box">
+      <p>
+        Existem diferentes formas de proteger suas criações: registro de direitos autorais, depósito de patente, registro de marca ou escolha de uma licença adequada.
+      </p>
+    </section>
+
+    <section class="example-box">
+      <h2>📌 Exemplo:</h2>
+      <p>
+        Lucas escreveu um livro e, para garantir a proteção sobre sua obra, registrou os direitos autorais. Esse registro é uma forma importante de comprovar legalmente a autoria e a data de criação, fortalecendo sua segurança jurídica caso alguém tente copiar ou utilizar o conteúdo sem autorização.
+      </p>
+      <p>
+        Embora o direito autoral surja automaticamente no momento em que a obra é criada, o registro serve como uma prova oficial, facilitando a defesa do autor em eventuais disputas ou processos. Assim, Lucas pode impedir cópias não autorizadas, adaptações indevidas ou usos comerciais não consentidos de seu livro.
+      </p>
+      <p>
+        Registrar sua criação é uma das maneiras mais eficazes de protegê-la. Além disso, é importante conhecer as leis de direitos autorais e, sempre que possível, incluir avisos de proteção na obra, como “Todos os direitos reservados”. Essas medidas reforçam o respeito à autoria e ajudam a preservar os direitos dos criadores.
+      </p>
+    </section>
+
+    <section class="quiz-box">
+      <h2>🧠 Quiz Rápido:</h2>
+
+      <form id="quizForm">
+        <div class="question">
+          <p>1. Como proteger uma música criada?</p>
+          <label><input type="radio" name="q1" value="1"> Registrando os direitos autorais</label>
+          <label><input type="radio" name="q1" value="0"> Depositando uma patente</label>
+          <label><input type="radio" name="q1" value="0"> Registrando uma marca</label>
+        </div>
+
+        <div class="question">
+          <p>2. O registro de marca serve para:</p>
+          <label><input type="radio" name="q2" value="0"> Proteger músicas</label>
+          <label><input type="radio" name="q2" value="1"> Identificar produtos ou serviços</label>
+          <label><input type="radio" name="q2" value="0"> Proteger invenções</label>
+        </div>
+
+        <div class="question">
+          <p>3. A patente protege:</p>
+          <label><input type="radio" name="q3" value="0"> Obras artísticas</label>
+          <label><input type="radio" name="q3" value="1"> Invenções técnicas</label>
+          <label><input type="radio" name="q3" value="0"> Domínios na internet</label>
+        </div>
+
+        <div class="question">
+          <p>4. Licenças abertas permitem:</p>
+          <label><input type="radio" name="q4" value="1"> Uso compartilhado com condições</label>
+          <label><input type="radio" name="q4" value="0"> Uso sem limites e sem condições</label>
+          <label><input type="radio" name="q4" value="0"> Uso exclusivo do autor</label>
+        </div>
+
+        <div class="question">
+          <p>5. Proteger sua criação ajuda a:</p>
+          <label><input type="radio" name="q5" value="1"> Garantir seus direitos</label>
+          <label><input type="radio" name="q5" value="0"> Deixar a criação sem dono</label>
+          <label><input type="radio" name="q5" value="0"> Impedir sua divulgação</label>
+        </div>
+
+        <button type="button" onclick="verificarQuiz()">Verificar respostas</button>
+        <p id="feedback"></p>
+      </form>
+    </section>
+
+    <button onclick="window.location.href='index.html'">Voltar ao Início</button>
+  </div>
+
+  <script>
+    // Mesmo verificarQuiz()
+    function verificarQuiz() {
+      const form = document.getElementById('quizForm');
+      const feedback = document.getElementById('feedback');
+      const perguntas = form.querySelectorAll('.question');
+      let respondidas = 0;
+      let acertos = 0;
+
+      perguntas.forEach((q) => {
+        const radios = q.querySelectorAll('input[type="radio"]');
+        let selecionado = false;
+        let correta = null;
+
+        radios.forEach(radio => {
+          if (radio.value === "1") correta = radio;
+          if (radio.checked) {
+            selecionado = true;
+            if (radio.value === "1") {
+              acertos++;
+              radio.parentElement.style.color = "green";
+            } else {
+              radio.parentElement.style.color = "red";
+            }
+          }
+        });
+
+        if (selecionado) respondidas++;
+        if (correta && !correta.checked) {
+          correta.parentElement.style.color = "green";
+        }
+      });
+
+      if (respondidas < perguntas.length) {
+        feedback.innerText = "Responda todas as perguntas antes de verificar.";
+        feedback.style.color = "orange";
+        return;
+      }
+
+      feedback.innerText = `Você acertou ${acertos} de ${perguntas.length} perguntas.`;
+      feedback.style.color = acertos === perguntas.length ? "green" : "red";
+    }
+  </script>
+</body>
+</html>
+
+
+  <script>
+    function verificarQuiz() {
+      const form = document.getElementById('quizForm');
+      const feedback = document.getElementById('feedback');
+      const perguntas = form.querySelectorAll('.question');
+      let respondidas = 0;
+
+      perguntas.forEach((q) => {
+        const radios = q.querySelectorAll('input[type="radio"]');
+        radios.forEach(radio => {
+          if (radio.checked) {
+            respondidas++;
+            return;
+          }
+        });
+      });
+
+      if (respondidas < perguntas.length) {
+        feedback.innerText = "⚠️ Responda todas as perguntas antes de verificar.";
+        feedback.style.backgroundColor = "#fff3cd";
+        feedback.style.color = "#856404";
+        feedback.style.padding = "1em";
+        feedback.style.borderRadius = "8px";
+        return;
+      }
+
+      let acertos = 0;
+
+      perguntas.forEach((q) => {
+        const radios = q.querySelectorAll('input[type="radio"]');
+        let correta = null;
+
+        radios.forEach(radio => {
+          radio.parentElement.style.color = ""; // limpa cor
+          if (radio.value === "1") {
+            correta = radio;
+          }
+        });
+
+        radios.forEach(radio => {
+          if (radio.checked) {
+            if (radio.value === "1") {
+              acertos++;
+              radio.parentElement.style.color = "green";
+            } else {
+              radio.parentElement.style.color = "red";
+            }
+          }
+        });
+
+        if (!correta.checked) {
+          correta.parentElement.style.color = "green";
+        }
+      });
+
+      feedback.innerText = `✅ Você acertou ${acertos} de ${perguntas.length} perguntas.`;
+      feedback.style.backgroundColor = acertos === perguntas.length ? "#d4edda" : "#f8d7da";
+      feedback.style.color = acertos === perguntas.length ? "#155724" : "#721c24";
+      feedback.style.padding = "1em";
+      feedback.style.borderRadius = "8px";
+    }
+  </script>
+
+  <script>
+    const progress = document.getElementById('progressBar');
+
+    function setProgress(percent) {
+      progress.style.width = percent + '%';
+    }
+
+    const moduleProgress = {
+      'modulo1.html': 20,
+      'modulo2.html': 40,
+      'modulo3.html': 60,
+      'modulo4.html': 80,
+      'modulo5.html': 100
+    };
+
+    const currentPage = window.location.pathname.split('/').pop();
+    setProgress(moduleProgress[currentPage] || 0);
+  </script>
+
+</body>
+</html>
